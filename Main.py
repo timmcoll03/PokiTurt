@@ -1,17 +1,32 @@
-from turtle import * # Import all elements of the turtle library
+#from turtle import * # Import all elements of the turtle library
 import json
 import urllib
 import os
+import requests
 
 pokiUrl= "https://pokeapi.co/api/v2/pokemon/ditto"
-swapiUrl = "https://swapi.dev/api/people/1/"
+swapiUrl = "https://swapi.dev/api/people"
 
 
+pokiInfo = requests.get(pokiUrl)
+#print("HTTP Status Code: " + str(pokiInfo.status_code))
+#print(pokiInfo.headers)
+pokiResponse = json.loads(pokiInfo.content)
+print("Pokemon Name: " + pokiResponse["sprites"]["back_default"])
 
-pokiresponse = urllib.urlopen(pokiUrl)
+swapiInfo = requests.get(swapiUrl)
+swapiResponse = json.loads(swapiInfo.content)
+
+print("Name: " + swapiResponse["results"][1]["name"])
+
+response = requests.get(pokiResponse["sprites"]["back_default"])
+
+file = open("pokiBack.png", "wb")
+file.write(response.content)
+file.close()
+
+"""
 #pokiJson = json.loads(pokiresponse.read())
-
-print(pokiresponse)
 
 swapiresponse = urllib.urlopen(swapiUrl)
 swapiJson = json.loads(swapiresponse.read())
@@ -39,7 +54,8 @@ kingTurt.speed(0)
 
 
 #Re-creates turtle sprite image as python2 gif 
-screen.addshape('python2.gif')
-kingTurt.shape('python2.gif')
+screen.addshape('download.gif')
+kingTurt.shape('download.gif')
 
 h=input("press close to exit") 
+"""
