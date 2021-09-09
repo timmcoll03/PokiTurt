@@ -3,6 +3,6 @@ import json
 import urllib
 import os
 
-testimg = "python2.png"
+testimg = "download.jpeg"
 base = os.path.splitext(testimg)[0]
 os.rename(testimg, base + '.gif')
