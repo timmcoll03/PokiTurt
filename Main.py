@@ -8,7 +8,9 @@ import random
 
 pokiNumberGlobal = 0
 im = [0] * 10
+ 
 
+"""this is a change"""
 
 
 def pokiImage(num):#this function will create a new pokiImage thats name is synced with [pokiNumberGlobal+1] 
